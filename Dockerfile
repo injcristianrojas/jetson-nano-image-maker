@@ -1,21 +1,7 @@
 FROM ubuntu:20.04 as base
 
 RUN apt update
-RUN apt install -y ca-certificates
-
-RUN apt install -y sudo
-RUN apt install -y ssh
-RUN apt install -y netplan.io
-
-# resizerootfs
-RUN apt install -y udev
-RUN apt install -y parted
-
-# ifconfig
-RUN apt install -y net-tools
-
-# needed by knod-static-nodes to create a list of static device nodes
-RUN apt install -y kmod
+RUN apt install -y ca-certificates sudo ssh netplan.io udev parted net-tools kmod
 
 # Install our resizerootfs service
 COPY root/etc/systemd/ /etc/systemd
